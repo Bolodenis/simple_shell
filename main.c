@@ -9,7 +9,7 @@
  */
 int main(int __attribute__((unused)) argc, char __attribute__((unused)) **argv)
 {
-char kommand[160] = "Denis$";
+char kommand[160] = "$";
 char *lineptr = NULL;
 size_t len = 0;
 int read_bytes;
