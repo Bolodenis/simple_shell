@@ -10,4 +10,5 @@
 #include <sys/wait.h>
 
 void execute_function(char **args);
+void parse_input(char *buf, char *args[]);
 #endif
