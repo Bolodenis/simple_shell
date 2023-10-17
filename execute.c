@@ -8,21 +8,13 @@
  */
 void execute_function(char **args)
 {
-int status;
-pid_t child = fork();
-if (child == -1)
+char *command = NULL;
+if (args)
 {
-perror("Error forking.\n");
-exit(EXIT_FAILURE);
+command = args[0];
+if (execve(command, args, NULL) == -1)
+{
+perror("Error:");
 }
-if (child == 0)
-{
-execvp(args[0], args);
-perror("Error executing command");
-exit(EXIT_FAILURE);
-}
-else
-{
-wait(&status);
 }
 }
