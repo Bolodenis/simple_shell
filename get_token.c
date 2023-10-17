@@ -7,7 +7,7 @@
 void parse_input(char *buf, char *args[])
 {
 int count = 0;
-char *delimiter = "\t\n ";
+char *delimiter = " \n";
 char *get_token = strtok(buf, delimiter);
 while (get_token != NULL)
 {

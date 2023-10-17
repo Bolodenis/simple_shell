@@ -17,11 +17,9 @@ exit(EXIT_FAILURE);
 }
 if (child == 0)
 {
-if (execve(args[0], args, NULL) == -1)
-{
+execvp(args[0], args);
 perror("Error executing command");
 exit(EXIT_FAILURE);
-}
 }
 else
 {
