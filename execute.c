@@ -8,11 +8,11 @@
  */
 void execute_function(char **args)
 {
-char *command = NULL;
+char *execute_command = NULL;
 if (args)
 {
-command = args[0];
-if (execve(command, args, NULL) == -1)
+execute_command = args[0];
+if (execve(execute_command, args, NULL) == -1)
 {
 perror("Error:");
 }
