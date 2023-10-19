@@ -8,13 +8,27 @@
  */
 void execute_function(char **args)
 {
-char *execute_command = NULL;
+int status;
 if (args)
 {
-execute_command = args[0];
-if (execve(execute_command, args, NULL) == -1)
+pid_t child = fork();
+if (child == -1)
+{
+perror("Fork error:");
+return;
+}
+if (child == 0)
+{
+char *execute_kommand = args[0];
+if (execve(execute_kommand, args, NULL) == -1)
 {
 perror("Error:");
+}
+exit(EXIT_FAILURE);
+}
+else
+{
+wait(&status);
 }
 }
 }

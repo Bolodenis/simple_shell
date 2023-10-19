@@ -18,9 +18,9 @@
 int main(int argc, char **argv, char **env)
 {
 char kommand[] = "$";
-char *buf = NULL;
+char *bufy = NULL;
 ssize_t nread;
-size_t bufcount = 0;
+size_t bufycount = 0;
 char *args[100];
 bool source_pipe = isatty(STDIN_FILENO);
 (void)argc;
@@ -31,28 +31,29 @@ if (source_pipe)
 {
 write(STDOUT_FILENO, kommand, strlen(kommand));
 }
-nread = getline(&buf, &bufcount, stdin);
+nread = getline(&bufy, &bufycount, stdin);
 if (nread != -1)
 {
-int should_continue = handle_special_commands(buf, env);
-if (!should_continue)
+int should_proceed = handle_special_commands(bufy, env);
+if (!should_proceed)
 {
-free(buf);
+free(bufy);
 break;
 }
-parse_input(buf, args);
+parse_input(bufy, args);
 execute_function(args);
 }
 if (nread == -1)
 {
 perror("getline not found");
-free(buf);
+free(bufy);
 exit(EXIT_FAILURE);
 }
-if (buf[nread - 1] == '\n')
+if (bufy[nread - 1] == '\n')
 {
-buf[nread - 1] = '\0';
+bufy[nread - 1] = '\0';
 }
 }
 return (0);
 }
+

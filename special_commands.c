@@ -8,28 +8,28 @@
  * command matches one of these special commands, the corresponding action
  * is taken, such as exiting the shell or displaying the environment variables.
  *
- * @buf: The input command line to be processed.
+ * @bufy: The input command line to be processed.
  * @env: The environment variables.
  *
  * Return:
  * - 1 if the input command was a special command and was successfully handled.
  * - 0 if the input command was not a special command.
  */
-int handle_special_commands(char *buf, char **env)
+int handle_special_commands(char *bufy, char **env)
 {
-if (buf == NULL)
+if (bufy == NULL)
 {
 return (1);
 }
-if (strcmp(buf, "exit\n") == 0)
+if (strcmp(bufy, "exit\n") == 0)
 {
-free(buf);
+free(bufy);
 exit(0);
 }
-else if (strcmp(buf, "env\n") == 0)
+else if (strcmp(bufy, "env\n") == 0)
 {
 print_env(env);
-free(buf);
+free(bufy);
 return (1);
 }
 return (1);
