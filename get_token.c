@@ -1,18 +1,18 @@
 #include "team.h"
 /**
  * parse_input - Tokenize a string into an array of arguments.
- * @bufy: The input string to be tokenized.
+ * @buf: The input string to be tokenized.
  * @args: Array to store tokenized arguments.
  */
-void parse_input(char *bufy, char *args[])
+void parse_input(char *buf, char *args[])
 {
 int count = 0;
-char *delimita = " \n";
-char *get_token = strtok(bufy, delimita);
+char *delimiter = " \n";
+char *get_token = strtok(buf, delimiter);
 while (get_token != NULL)
 {
 args[count] = get_token;
-get_token = strtok(NULL, delimita);
+get_token = strtok(NULL, delimiter);
 count++;
 }
 args[count] = NULL;

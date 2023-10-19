@@ -11,6 +11,6 @@
 
 void execute_function(char **args);
 void parse_input(char *bufy, char *args[]);
-int handle_special_commands(char *bufy, char **env);
+int handle_special_commands(char *lineptr, char **env);
 void print_env(char **env);
 #endif
